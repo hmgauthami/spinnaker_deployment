@@ -34,14 +34,14 @@ Spinnaker&#39;s deployment management features are used to construct and manage 
 
 Automatic triggers can be a Jenkins job, a CRON schedule, or another pipeline. You can also manually start a pipeline. Notifications can be sent out to email, SMS or HipChat on pipeline start/complete/fail.
 
-<img src="./deploymenagement.PNG" width="800">
+<img src="./deploymenagement.PNG" width="700">
 ####Fig 1. Deployment Management with Spinnaker
 
 
 ###ARCHETECTURE
 
 Deploying this Quick Start with the default parameters builds the following Spinnaker environment in the AWS Cloud.
-<img src="./spinnakerarchitecture.PNG" width="800">
+<img src="./spinnakerarchitecture.PNG" width="700">
 ####Figure 2: Architecture for Spinnaker on AWS
 
 ###Amazon Web Services Setup
@@ -106,7 +106,7 @@ Once you&#39;ve setup your Cloud provider environment you are ready to install a
 
 ## SPINNAKER COMPONENTS
 
-**image
+<img src="./components.PNG" width="600">
 
 Spinnaker can be deployed on any target environment, and can manage infrastructure in any of the supported cloud providers. For instance, you can deploy your Spinnaker cluster to Google Cloud Platform, but manage infrastructure on Amazon Web Services and Kubernetes. Next, we&#39;ll step through the configuration for each of the supported target environments.
 
