@@ -20,7 +20,7 @@ Spinnaker&#39;s cluster management features are used to manage resources in the 
 
 - **Server Group** : The base resource to be managed is the Server Group. A Server Group identifies the machine instance profile on which to execute images along with the number of instances, and is associated with a Load Balancer and a Security Group. A Server Group is also identified with basic configuration settings, such as user account information and the region/zone in which images are deployed. When deployed, a Server Group is a collection of virtual machines running software.
 
-<img src="./clustermanagement.PNG" width="800">
+<img src="./clustermanagement.PNG" width="500">
 
 - **Security Group** : A Security Group defines network traffic access. It is effectively a set of firewall rules defined by an IP range (CIDR) along with a communication protocol (e.g., TCP) and port range.
 - **Load Balancer** : A Load Balancer is associated with an ingress protocol and port range, and balances traffic among instances in the corresponding Server Group. Optionally, you can enable health checks for a load balancer, with flexibility to define health criteria and specify the health check endpoint.
@@ -34,14 +34,14 @@ Spinnaker&#39;s deployment management features are used to construct and manage 
 
 Automatic triggers can be a Jenkins job, a CRON schedule, or another pipeline. You can also manually start a pipeline. Notifications can be sent out to email, SMS or HipChat on pipeline start/complete/fail.
 
-<img src="." width="800">
+<img src="./deploymenagement.PNG" width="800">
 ####Fig 1. Deployment Management with Spinnaker
 
 
 ###ARCHETECTURE
 
 Deploying this Quick Start with the default parameters builds the following Spinnaker environment in the AWS Cloud.
-
+<img src="./spinnakerarchitecture.PNG" width="800">
 ####Figure 2: Architecture for Spinnaker on AWS
 
 ###Amazon Web Services Setup
