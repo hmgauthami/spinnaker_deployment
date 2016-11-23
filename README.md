@@ -33,14 +33,15 @@ Spinnaker&#39;s deployment management features are used to construct and manage 
 
 Automatic triggers can be a Jenkins job, a CRON schedule, or another pipeline. You can also manually start a pipeline. Notifications can be sent out to email, SMS or HipChat on pipeline start/complete/fail.
 
-**Fig 1. Deployment Management with Spinnaker**
+<img src="." width="800">
+####Fig 1. Deployment Management with Spinnaker
 
 
 ###ARCHETECTURE
 
 Deploying this Quick Start with the default parameters builds the following Spinnaker environment in the AWS Cloud.
 
-#Figure 2: Architecture for Spinnaker on AWS
+####Figure 2: Architecture for Spinnaker on AWS
 
 ###Amazon Web Services Setup
 
