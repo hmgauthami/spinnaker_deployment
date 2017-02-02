@@ -147,7 +147,7 @@ Cassandra is used by Spinnaker to persist pipelines configuration and cluster in
 `org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [com.netflix.spinnaker.front50.model.pipeline.PipelineDAO] is defined: expected single matching bean but found 2: pipelineRepository,s3PipelineDAO`
 
 Dissable Cassandra config under /opt/spinnaker/config/front50.yml
-`server:
+```server:
   port: ${services.front50.port:8080}
   address: ${services.front50.host:localhost}
 
@@ -187,7 +187,7 @@ spinnaker:
     enabled: true
     bucket: deployspinnaker
     rootFolder: front50
-`
+```
 
 
 https://&lt;domainname&gt;
