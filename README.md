@@ -140,6 +140,56 @@ role to &quot;spinnakerRole&quot;.
 
 Once the instance is launched Access spinnaker using Route53 Domain name.
 
+###Using S3 with Spinnaker 
+Cassandra is used by Spinnaker to persist pipelines configuration and cluster information. While Cassandra may suit your needs it might be overkill for POCs or early development phases where the number of configurations and continuous deployments are small. While Spinnaker can be configured to have an Amazon S3 backend, it's not always trivial to setup.
+
+#You might find an error in the front50 log that looks like the following:
+`org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [com.netflix.spinnaker.front50.model.pipeline.PipelineDAO] is defined: expected single matching bean but found 2: pipelineRepository,s3PipelineDAO`
+
+Dissable Cassandra config under /opt/spinnaker/config/front50.yml
+`server:
+  port: ${services.front50.port:8080}
+  address: ${services.front50.host:localhost}
+
+cassandra:
+  enabled: false #${services.front50.cassandra.enabled:true}
+  embedded: ${services.cassandra.embedded:false}
+  host: ${services.cassandra.host:localhost}
+
+aws:
+  simpleDBEnabled: ${providers.aws.simpleDBEnabled:false}
+  defaultSimpleDBDomain: ${providers.aws.defaultSimpleDBDomain}
+
+spinnaker:
+  cassandra:
+    enabled: false #${services.front50.cassandra.enabled:true}
+    host: ${services.cassandra.host:localhost}
+    port: ${services.cassandra.port:9042}
+    cluster: ${services.cassandra.cluster:CASS_SPINNAKER}
+    keyspace: front50
+    name: global
+
+  redis:
+    enabled: ${services.front50.redis.enabled:false}
+
+  gcs:
+    enabled: ${services.front50.gcs.enabled:false}
+    bucket: ${services.front50.storage_bucket:}
+    rootFolder: ${services.front50.bucket_root:front50}
+    project: ${providers.google.primaryCredentials.project}
+    jsonPath: ${providers.google.primaryCredentials.jsonPath}
+
+  aws:
+    enabled: true #${services.front50.s3.enabled:false}
+    bucket: ${services.front50.storage_bucket:deployspinnaker}
+    rootFolder: ${services.front50.bucket_root:front50}
+  s3:
+    enabled: true
+    bucket: deployspinnaker
+    rootFolder: front50
+`
+
+
 https://&lt;domainname&gt;
 
 [https://builddeploy.modeler.gy/](https://builddeploy.modeler.gy/)
