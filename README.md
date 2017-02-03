@@ -131,7 +131,7 @@ Next Step, followed by Create Role.
   - Click Launch Instance.
   - Click Community AMIs then
   - If the default region where your resources were allocated in  [Step 1](http://www.spinnaker.io/docs/creating-a-spinnaker-instance#step-1-set-up-your-target-deployment-environment) is us-west-2, click Select for the spinnaker\_jenkins ami-5632fb36 image.
-  - Under Step 2: Choose an Instance Type, click the radio button
+    - Under Step 2: Choose an Instance Type, click the radio button
 for m4.xlarge, then click Next: Configure Instance Details.
   - Set the Auto-assign Public IP field to Enable, and the IAM
 role to &quot;spinnakerRole&quot;.
@@ -140,6 +140,57 @@ role to &quot;spinnakerRole&quot;.
 
 Once the instance is launched Access spinnaker using Route53 Domain name.
 
+https://&lt;domainname&gt;
+
+[https://builddeploy.modeler.gy/](https://builddeploy.modeler.gy/)
+
+Credentials: logikoma / password
+
+
+###Configurations 
+**Integrate Spinnaker with Jenkins**
+
+Edit Spinnaker-local.yml file under /opt/spinnaker/config/
+
+```  jenkins:
+    # If you are integrating Jenkins, set its location here using the baseUrl
+    # field and provide the username/password credentials.
+    # You must also enable the "igor" service listed separately.
+    #
+    # If you have multiple jenkins servers, you will need to list
+    # them in an igor-local.yml. See jenkins.masters in config/igor.yml.
+    #
+    # Note that jenkins is not installed with Spinnaker so you must obtain this
+    # on your own if you are interested.
+    enabled: true
+    defaultMaster:
+      name: Jenkins # The display name for this server
+      baseUrl: https://build.modeler.gy/
+      username: <JenkinsUsername>
+      password: <Keytoken of the user> 
+      
+     ```
+     
+### Setup Login for Spinnaker 
+If you jumped directly to this part of the document to find out how to do authentication, it is important to note one thing. There is a common misconception that you are required to use .htaccess files in order to implement password authentication. This is not the case. Putting authentication directives in a <Directory> section, in your main server configuration file, is the preferred way to implement this, and .htaccess files should be used only if you don't have access to the main server configuration file. See above for a discussion of when you should and should not use .htaccess files.
+
+Having said that, if you still think you need to use a .htaccess file, you may find that a configuration such as what follows may work for you.
+
+.htaccess file contents:
+
+RewriteEngine on
+AuthType Basic
+AuthName "Restricted Content"
+AuthUserFile /etc/apache2/.htpasswd
+Require valid-user
+
+Add Password in /etc/apache2/.htpasswd
+
+spinnaker:$apr1$CtqoU39N$2orQuBV.r7am2FGWo2Hat1
+logikoma:$apr1$9Kz1zE1Z$blOZHX8xPtKYzw3g28znA1
+
+
+
 ###Using S3 with Spinnaker 
 Cassandra is used by Spinnaker to persist pipelines configuration and cluster information. While Cassandra may suit your needs it might be overkill for POCs or early development phases where the number of configurations and continuous deployments are small. While Spinnaker can be configured to have an Amazon S3 backend, it's not always trivial to setup.
 
@@ -147,8 +198,8 @@ Cassandra is used by Spinnaker to persist pipelines configuration and cluster in
 `org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [com.netflix.spinnaker.front50.model.pipeline.PipelineDAO] is defined: expected single matching bean but found 2: pipelineRepository,s3PipelineDAO`
 
 Dissable Cassandra config under /opt/spinnaker/config/front50.yml
-```
-cassandra:
+
+```cassandra:
   enabled: false #${services.front50.cassandra.enabled:true}
   embedded: ${services.cassandra.embedded:false}
   host: ${services.cassandra.host:localhost}
@@ -172,10 +223,4 @@ spinnaker:
     bucket: deployspinnaker
     rootFolder: front50
 ```
-
-
-https://&lt;domainname&gt;
-
-[https://builddeploy.modeler.gy/](https://builddeploy.modeler.gy/)
-
-Credentials: logikoma / password
+To Modify Application Dependencies or Adding additional pipeline information modify /opt/rosco/config/packer/install_packages.sh
