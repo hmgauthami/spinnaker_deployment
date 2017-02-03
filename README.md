@@ -171,7 +171,7 @@ Edit Spinnaker-local.yml file under /opt/spinnaker/config/
       
      ```
      
-### Setup Login for Spinnaker 
+**Setup Login for Spinnaker**
 If you jumped directly to this part of the document to find out how to do authentication, it is important to note one thing. There is a common misconception that you are required to use .htaccess files in order to implement password authentication. This is not the case. Putting authentication directives in a <Directory> section, in your main server configuration file, is the preferred way to implement this, and .htaccess files should be used only if you don't have access to the main server configuration file. See above for a discussion of when you should and should not use .htaccess files.
 
 Having said that, if you still think you need to use a .htaccess file, you may find that a configuration such as what follows may work for you.
@@ -191,7 +191,8 @@ logikoma:$apr1$9Kz1zE1Z$blOZHX8xPtKYzw3g28znA1
 
 
 
-###Using S3 with Spinnaker 
+**Using S3 with Spinnaker** 
+
 Cassandra is used by Spinnaker to persist pipelines configuration and cluster information. While Cassandra may suit your needs it might be overkill for POCs or early development phases where the number of configurations and continuous deployments are small. While Spinnaker can be configured to have an Amazon S3 backend, it's not always trivial to setup.
 
 #You might find an error in the front50 log that looks like the following:
