@@ -152,7 +152,7 @@ Credentials: logikoma / password
 
 Edit Spinnaker-local.yml file under /opt/spinnaker/config/
 
-  jenkins:
+`jenkins:
     # If you are integrating Jenkins, set its location here using the baseUrl
     # field and provide the username/password credentials.
     # You must also enable the "igor" service listed separately.
@@ -167,7 +167,7 @@ Edit Spinnaker-local.yml file under /opt/spinnaker/config/
       name: Jenkins # The display name for this server
       baseUrl: https://build.modeler.gy/
       username: <JenkinsUsername>
-      password: <Keytoken of the user> 
+      password: <Keytoken of the user> `
          
 **Setup Login for Spinnaker**
 
@@ -177,7 +177,7 @@ Having said that, if you still think you need to use a .htaccess file, you may f
 
 .htaccess file contents:
 
-RewriteEngine on
+```RewriteEngine on
 AuthType Basic
 AuthName "Restricted Content"
 AuthUserFile /etc/apache2/.htpasswd
@@ -186,7 +186,7 @@ Require valid-user
 Add Password in /etc/apache2/.htpasswd
 
 spinnaker:$apr1$CtqoU39N$2orQuBV.r7am2FGWo2Hat1
-logikoma:$apr1$9Kz1zE1Z$blOZHX8xPtKYzw3g28znA1
+logikoma:$apr1$9Kz1zE1Z$blOZHX8xPtKYzw3g28znA1```
 
 
 
