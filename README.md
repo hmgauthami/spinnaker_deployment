@@ -152,7 +152,7 @@ Credentials: logikoma / password
 
 Edit Spinnaker-local.yml file under /opt/spinnaker/config/
 
-```  jenkins:
+  jenkins:
     # If you are integrating Jenkins, set its location here using the baseUrl
     # field and provide the username/password credentials.
     # You must also enable the "igor" service listed separately.
@@ -168,10 +168,9 @@ Edit Spinnaker-local.yml file under /opt/spinnaker/config/
       baseUrl: https://build.modeler.gy/
       username: <JenkinsUsername>
       password: <Keytoken of the user> 
-      
-     ```
-     
+         
 **Setup Login for Spinnaker**
+
 If you jumped directly to this part of the document to find out how to do authentication, it is important to note one thing. There is a common misconception that you are required to use .htaccess files in order to implement password authentication. This is not the case. Putting authentication directives in a <Directory> section, in your main server configuration file, is the preferred way to implement this, and .htaccess files should be used only if you don't have access to the main server configuration file. See above for a discussion of when you should and should not use .htaccess files.
 
 Having said that, if you still think you need to use a .htaccess file, you may find that a configuration such as what follows may work for you.
