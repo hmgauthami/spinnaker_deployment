@@ -223,4 +223,19 @@ spinnaker:
     bucket: deployspinnaker
     rootFolder: front50
 ```
+##Add Additional OS type on Spinnaker console. 
+To Add Ubuntu 16.04V include below code /opt/rosco/config/rosco.yml 
+```
+ - baseImage:
+        id: Ubuntu
+        shortDescription: v16.04
+        detailedDescription: Ubuntu 16.04.1 LTS
+        packageType: deb
+      virtualizationSettings:
+      - region: us-west-2
+        virtualizationType: hvm
+        instanceType: t2.micro
+        sourceAmi: ami-a9d276c9
+        sshUserName: ubuntu
+```
 To Modify Application Dependencies or Adding additional pipeline information modify /opt/rosco/config/packer/install_packages.sh
