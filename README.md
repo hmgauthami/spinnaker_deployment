@@ -150,7 +150,7 @@ Credentials: logikoma / password
 ###Configurations 
 **Integrate Spinnaker with Jenkins**
 
-<img src="./CI +Spinnaker.PNG" width="500">
+<img src="./CI +Spinnaker.PNG" width="700">
 
 Edit Spinnaker-local.yml file under /opt/spinnaker/config/
 
